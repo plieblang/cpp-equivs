@@ -36,3 +36,19 @@ sorting a vector:
 
 	#include <algorithm>
 	sort(v.begin(), v.end());
+
+creating a members of a class with that class type
+
+	class clazz{
+		clazz* c;
+	}
+	
+constructors
+
+	Clazz c()
+	Creates a class with automatic storage duration; ie it is cleaned up automatically
+	
+	new Clazz()
+	Creates a class with dynamic storage duration and must be manually deleted
+	Returns a pointer to the instantiated object
+	Example use case is for an array where size isn't known at compile time
