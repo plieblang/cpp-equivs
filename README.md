@@ -23,14 +23,42 @@ to skip blank line of input:
 substring:
 
 	string line = "test";
-	line.substr(0,2);//produces "tes"
-	inclusive at the beginning, excusive at the end
+	line.substr(0,2);//produces "te"
+	inclusive at the beginning, exclusive at the end
+	
+string length:
+
+	string str = "test";
+	cout << str.length();//prints 4
+	
+string to int:
+
+	string str = "1965";
+	int strAsInt = stoi(str);
 	
 read a line with spaces into a string:
 
 	string line;
-	cin.ignore()//flushes newline
-	getline(cin, line)
+	cin.ignore();//flushes newline
+	getline(cin, line);
+	
+split string:
+
+	#include <sstream>  //for std::istringstream
+	#include <iterator> //for std::istream_iterator
+	#include <vector>
+	#include <string>
+	
+	string line;
+	while(getline(cin, line)){
+		istringstream ss(line);
+		istream_iterator<std::string> begin(ss), end;
+
+		//putting all the tokens in the vector
+		vector<string> arrayTokens(begin, end);
+
+		cout << arrayTokens[0];
+	}
 	
 sorting a vector:
 
