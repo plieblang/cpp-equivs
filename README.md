@@ -85,9 +85,12 @@ to skip blank line of input:
 	
 substring:
 
+	//Very important
+	//The first parameter is the starting index (inclusive)
+	//the second parameter is the length of the desired substring
+	//NOT the ending index
 	string line = "test";
 	line.substr(0,2);//produces "te"
-	inclusive at the beginning, exclusive at the end
 	
 string length:
 
