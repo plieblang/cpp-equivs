@@ -72,7 +72,6 @@ constructors
 # Methods
 printing to n decimal places with cout:
 
-	#include <iomanip>
 	double d = 5.55555;
 	int precision = 3;
 	cout.precision(precision);
