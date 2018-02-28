@@ -1,5 +1,11 @@
 All of this assumes using namespace std;
 
+#Compilation
+
+Contest:
+
+	g++ -g -O2 -std=gnu++14
+
 # Classes
 cin/cout:
 
