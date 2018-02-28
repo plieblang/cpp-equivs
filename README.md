@@ -1,6 +1,6 @@
 All of this assumes using namespace std;
 
-#Compilation
+# Compilation
 
 Contest:
 
@@ -23,12 +23,12 @@ string:
 
 	#include <string>
 
-arraylist:
+resizable array:
 
 	#include <vector>
 	vector<int> v;
 
-hashmap:
+hashmap/dictionary:
 
 	//c++11 and above
 	//have had trouble with g++ not recognizing it
@@ -105,6 +105,7 @@ string length:
 	
 string to int:
 
+	//C++11 only
 	string str = "1965";
 	int strAsInt = stoi(str);
 
