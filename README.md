@@ -14,10 +14,18 @@ cin/cout:
 printf:
 
 	#include <stdio.h>
-	int x = 5;
+	int x = 17;
 	printf("%d", x);
-	double y = 5.5555555;
+	double y = 17.17171717;
 	printf("%.3f", y);//prints to 3 decimal places and rounds
+
+printf variable formatters:
+
+	%s:  strings
+	%d:  integers
+	%l:  long integer
+	%ld:  long integers
+	%f:  float
 	
 string:
 
@@ -78,7 +86,7 @@ constructors
 # Methods
 printing to n decimal places with cout:
 
-	double d = 5.55555;
+	double d = 17.1717171717;
 	int precision = 3;
 	cout.precision(precision);
 	//this rounds
@@ -96,7 +104,8 @@ substring:
 	//the second parameter is the length of the desired substring
 	//NOT the ending index
 	string line = "test";
-	line.substr(0,2);//produces "te"
+	line.substr(0, 2);//produces "te"
+	line.substr(1, 2);//produces "es"
 	
 string length:
 
@@ -106,8 +115,12 @@ string length:
 string to int:
 
 	//C++11 only
-	string str = "1965";
-	int strAsInt = stoi(str);
+	int strAsInt = stoi("17");
+
+int to string:
+
+	//C++11 only
+	string str = to_string(17);
 
 getting a char from a string at an index:
 
@@ -118,7 +131,8 @@ getting a char from a string at an index:
 read a line with spaces into a string:
 
 	string line;
-	cin.ignore();//flushes newline
+	//flushes newline by ignoring every character up until newline
+	cin.ignore();
 	getline(cin, line);
 	
 split string:
@@ -143,3 +157,33 @@ sorting a vector:
 
 	#include <algorithm>
 	sort(v.begin(), v.end());
+
+copying a vector:
+
+	vector<int> v1;
+	//add ints to v1;
+	//deep copy
+	vector<int> v2 = v1;
+
+check if unordered map contains key:
+
+	unordered_map<int, int> dict;
+	int key = 17;
+	if(dict.count(key)){
+		//dict contains 17
+	}
+
+add item to unordered_map*:
+
+	unordered_map<int, int> *dict = new unordered_map<int, int>();
+	dict->insert(make_pair(17, 17));
+
+get item from unordered_map*:
+
+	unordered_map<int, int> *dict = new unordered_map<int, int>();
+	//add things; see above
+	dict->at(17);
+
+INT_MIN and INT_MAX:
+
+	#include <climits>
