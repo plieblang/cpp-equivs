@@ -135,6 +135,12 @@ read a line with spaces into a string:
 	cin.ignore();
 	getline(cin, line);
 	
+get index of first occurrence of a substring in a string:
+
+	string s = "thisbetest";
+	//6
+	s.find("test");
+	
 split string:
 
 	#include <sstream>  //for std::istringstream
@@ -153,8 +159,14 @@ split string:
 		cout << arrayTokens[0];
 	}
 	
+vector size:
+
+	vector<int> v;
+	v.size();
+	
 sorting a vector:
 
+	//sorts vectors of strings as well
 	#include <algorithm>
 	sort(v.begin(), v.end());
 
