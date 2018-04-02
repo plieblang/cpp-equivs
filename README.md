@@ -139,6 +139,7 @@ get index of first occurrence of a substring in a string:
 
 	string s = "thisbetest";
 	//6
+	//returns string::npos (size_t type) if the substring isn't found
 	s.find("test");
 	
 split string:
@@ -177,6 +178,12 @@ copying a vector:
 	//deep copy
 	vector<int> v2 = v1;
 
+remove item at index from vector:
+
+	//v contains numbers from 0-20
+	//removes the index + 1 item, in this case 17
+	v.erase(v.begin() + 17);
+
 check if unordered map contains key:
 
 	unordered_map<int, int> dict;
@@ -199,3 +206,19 @@ get item from unordered_map*:
 INT_MIN and INT_MAX:
 
 	#include <climits>
+
+exponents:
+
+	#include <math.h>
+	//integrals (ie ints, chars, etc) will be cast to doubles
+	double base = 17;
+	double exp = 2;
+	pow(base, exp);//289
+
+square root:
+
+	#include <math.h>
+	//integrals (ie ints, chars, etc) will be cast to doubles
+	double x = 289;
+	17
+	sqrt(x);
