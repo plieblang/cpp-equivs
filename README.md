@@ -106,6 +106,12 @@ substring:
 	string line = "test";
 	line.substr(0, 2);//produces "te"
 	line.substr(1, 2);//produces "es"
+
+replace character in string:
+
+	string str = "This test";
+	//Becomes "Thin test"
+	str.replace(str.begin() + 3, str.begin() + 4, "n");
 	
 string length:
 
@@ -192,16 +198,26 @@ check if unordered map contains key:
 		//dict contains 17
 	}
 
-add item to unordered_map*:
+add item to unordered map*:
 
 	unordered_map<int, int> *dict = new unordered_map<int, int>();
 	dict->insert(make_pair(17, 17));
 
-get item from unordered_map*:
+get item from unordered map*:
 
 	unordered_map<int, int> *dict = new unordered_map<int, int>();
 	//add things; see above
 	dict->at(17);
+
+loop through unordered map:
+
+	unordered_map<int, int> dict;
+	for(auto x : dict){
+		//key
+		cout << x.first;
+		//value
+		cout << x.second;
+	}
 
 INT_MIN and INT_MAX:
 
@@ -222,3 +238,11 @@ square root:
 	double x = 289;
 	17
 	sqrt(x);
+
+log and log2:
+
+	TODO
+
+ceiling and floor
+
+	TODO
