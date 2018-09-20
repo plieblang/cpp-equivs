@@ -46,6 +46,16 @@ hashmap/dictionary:
 	#include <unordered_map>
 	unordered_map<int, int> dict;
 
+set/hashset
+
+	#include <unordered_set>
+	unordered_set<int> s;
+
+priority queue
+
+	#include <queue>
+	priority_queue<int> pq;
+
 can also use map:
 
 	//slower than unordered_map
@@ -148,10 +158,10 @@ get index of first occurrence of a substring in a string:
 	//returns string::npos (size_t type) if the substring isn't found
 	s.find("test");
 	
-split string:
+split string on space:
 
-	#include <sstream>  //for std::istringstream
-	#include <iterator> //for std::istream_iterator
+	#include <sstream>
+	#include <iterator>
 	#include <vector>
 	#include <string>
 	
@@ -219,6 +229,19 @@ loop through unordered map:
 		cout << x.second;
 	}
 
+adding to priority queue
+
+	priority_queue<int> pq;
+	pq.push(5);
+
+popping from priority queue
+
+	priority_queue<int> pq;
+	//add stuff
+	int x = pq.top();
+	//note that pop() removes the item without returning it
+	pq.pop()
+
 INT_MIN and INT_MAX:
 
 	#include <climits>
@@ -241,8 +264,20 @@ square root:
 
 log and log2:
 
-	TODO
+	#include <cmath>
+	//or...
+	///#include <math.h>
+	double x = 2.72, y = 2, z = 10;
+	x = log(x);
+	y = log2(y);
+	z = log10(z);
+	//all are now ~1.0
 
 ceiling and floor
 
-	TODO
+	#include <cmath>
+	double x = 5.5, y = 13.8;
+	cout << ceil(x);
+	cout << floor(y);
+
+TODO more cmath/math.h stuff
