@@ -46,12 +46,12 @@ hashmap/dictionary:
 	#include <unordered_map>
 	unordered_map<int, int> dict;
 
-set/hashset
+set/hashset:
 
 	#include <unordered_set>
 	unordered_set<int> s;
 
-priority queue
+priority queue:
 
 	#include <queue>
 	priority_queue<int> pq;
@@ -72,7 +72,12 @@ array class (only C++11 and above):
 	array<int, size> arr = {0, 1, 2, 3, 4};
 	array<int, size> arr{{0, 1, 2, 3, 4}}//double curly braces not needed for c++14
 
-creating a members of a class with that class type
+pair:
+
+	#include <utility>
+	pair<int, int> p = make_pair(1, 2);
+
+creating a members of a class with that class type:
 
 	class clazz{
 		clazz* c;
@@ -200,6 +205,11 @@ remove item at index from vector:
 	//removes the index + 1 item, in this case 17
 	v.erase(v.begin() + 17);
 
+accessing items in a pair:
+
+	pair<int, int> p = make_pair(1, 2);
+	cout << pair.first << pair.second;
+
 check if unordered map contains key:
 
 	unordered_map<int, int> dict;
@@ -273,7 +283,7 @@ log and log2:
 	z = log10(z);
 	//all are now ~1.0
 
-ceiling and floor
+ceiling and floor:
 
 	#include <cmath>
 	double x = 5.5, y = 13.8;
