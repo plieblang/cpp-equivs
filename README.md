@@ -27,15 +27,21 @@ printf variable formatters:
 	%ld:  long integers
 	%f:  float
 	
-string:
+useful include headers
 
+	#include <iostream>
 	#include <string>
-
-resizable array:
-
 	#include <vector>
-	vector<int> v;
-
+	#include <utility>
+	#include <unordered_map>
+	#include <unordered_set>
+	#include <queue>
+	#include <stack>
+	#include <algorithm>
+	#include <cmath>
+	#include <climits>
+	#include <functional>
+	
 hashmap/dictionary:
 
 	//c++11 and above
@@ -46,35 +52,14 @@ hashmap/dictionary:
 	#include <unordered_map>
 	unordered_map<int, int> dict;
 
-set/hashset:
-
-	#include <unordered_set>
-	unordered_set<int> s;
-
-priority queue:
-
-	#include <queue>
-	priority_queue<int> pq;
-
 can also use map:
 
 	//slower than unordered_map
 	#include <map>
 	map<int, int> dict;
 
-array class (only C++11 and above):
-
-	//n.b.
-	//I don't believe this can be instantiated without knowing the values beforehand
-	//so a vector is probably more useful in most situations
-	#include <array>
-	int size = 5;
-	array<int, size> arr = {0, 1, 2, 3, 4};
-	array<int, size> arr{{0, 1, 2, 3, 4}}//double curly braces not needed for c++14
-
 pair:
 
-	#include <utility>
 	pair<int, int> p = make_pair(1, 2);
 
 creating a members of a class with that class type:
@@ -91,7 +76,7 @@ constructors
 	Fast
 	Sacrifices flexibility because you must know the exact quantity, lifetime, and type of objects while you’re writing the program.
 	
-	new Clazz()
+	Clazz *c = new Clazz()
 	Creates a class with dynamic storage duration and must be manually deleted
 	Returns a pointer to the instantiated object
 	Allocates to heap
@@ -153,7 +138,9 @@ read a line with spaces into a string:
 
 	string line;
 	//flushes newline by ignoring every character up until newline
-	cin.ignore();
+	//TODO check whether this is correct
+	//https://stackoverflow.com/questions/25475384/when-and-why-do-i-need-to-use-cin-ignore-in-c#25476169
+	//cin.ignore();
 	getline(cin, line);
 	
 get index of first occurrence of a substring in a string:
@@ -173,12 +160,9 @@ split string on space:
 	string line;
 	while(getline(cin, line)){
 		istringstream ss(line);
-		istream_iterator<std::string> begin(ss), end;
-
-		//putting all the tokens in the vector
-		vector<string> arrayTokens(begin, end);
-
-		cout << arrayTokens[0];
+		//change the generic types of the istream_iterator and the vector to split into ints, chars, etc.
+		istream_iterator<string> begin(ss), end;
+		vector<string> tokens(begin, end);
 	}
 	
 vector size:
@@ -188,22 +172,42 @@ vector size:
 	
 sorting a vector:
 
-	//sorts vectors of strings as well
-	#include <algorithm>
+	//sorts vector of strings as well
 	sort(v.begin(), v.end());
+	
+sort a vector in reverse:
 
-copying a vector:
+	sort(v.begin(), v.end(), less<int>());
+	
+sorting lists of items by nth element
 
-	vector<int> v1;
-	//add ints to v1;
-	//deep copy
-	vector<int> v2 = v1;
+	//IMPORTANT:  this variable must be global so that the lambda can see it
+	//also cannot be passed to a comparison function
+	int keyIdx = 2;
+	
+	vector<vector<int>> vec;
+	for (int i = 0; i < 50; i++) {
+		vector<int> temp;
+		for (int i = 0; i < 25; i++) {
+			temp.push_back(rand());
+		}
+		vec.push_back(temp);
+	}
+
+	sort(vec.begin(), vec.end(), [](vector<int> &v1, vector<int> &v2) {
+		return v1[keyIdx] < v2[keyIdx];
+	});
 
 remove item at index from vector:
 
 	//v contains numbers from 0-20
 	//removes the index + 1 item, in this case 17
 	v.erase(v.begin() + 17);
+
+remove value from vector
+
+	TODO
+	distVec.erase(remove(distVec.begin(), distVec.end(), v), distVec.end());
 
 accessing items in a pair:
 
@@ -249,45 +253,32 @@ popping from priority queue
 	priority_queue<int> pq;
 	//add stuff
 	int x = pq.top();
-	//note that pop() removes the item without returning it
+	//pop() removes the item without returning it
 	pq.pop()
+	
+priority queue with custom comparator
+
+	auto comparator = [](vector<int> v1, vector<int> v2) {
+		return v1[1] > v2[1];
+	};
+	priority_queue<vector<int>, vector<vector<int>>, decltype(comparator)> q(comparator);
+	for (int i = 0; i < 50; i++) {
+		vector<int> v;
+		for (int j = 0; j < 5; j++) {
+			v.push_back(10000 - j * i);
+		}
+		q.push(v);
+	}
 
 INT_MIN and INT_MAX:
 
 	#include <climits>
+	
+accumulate
 
-exponents:
+	#include <numeric>
+	TODO
 
-	#include <math.h>
-	//integrals (ie ints, chars, etc) will be cast to doubles
-	double base = 17;
-	double exp = 2;
-	pow(base, exp);//289
+the cmath header
 
-square root:
-
-	#include <math.h>
-	//integrals (ie ints, chars, etc) will be cast to doubles
-	double x = 289;
-	17
-	sqrt(x);
-
-log and log2:
-
-	#include <cmath>
-	//or...
-	///#include <math.h>
-	double x = 2.72, y = 2, z = 10;
-	x = log(x);
-	y = log2(y);
-	z = log10(z);
-	//all are now ~1.0
-
-ceiling and floor:
-
-	#include <cmath>
-	double x = 5.5, y = 13.8;
-	cout << ceil(x);
-	cout << floor(y);
-
-TODO more cmath/math.h stuff
+the functional header
