@@ -5,11 +5,18 @@ All of this assumes using namespace std;
 Contest:
 
 	g++ -g -O2 -std=gnu++14
+	
+universal include
+
+	//Available with GCC, not MSVC
+	#include <bits/stdc++.h>
 
 # Classes
 cin/cout:
 
 	#include <iostream>
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
 printf:
 
@@ -86,11 +93,10 @@ constructors
 # Methods
 printing to n decimal places with cout:
 
+	#include <iomanip>
 	double d = 17.1717171717;
-	int precision = 3;
-	cout.precision(precision);
 	//this rounds
-	cout << d;
+	cout << setprecision(1) << fixed << d;
 
 to skip blank line of input:
 
