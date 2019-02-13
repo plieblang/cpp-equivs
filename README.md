@@ -187,8 +187,7 @@ sort a vector in reverse:
 	
 sorting lists of items by nth element
 
-	//IMPORTANT:  this variable must be global so that the lambda can see it
-	//also cannot be passed to a comparison function
+	//this variable must be captured by the lambda
 	int keyIdx = 2;
 	
 	vector<vector<int>> vec;
@@ -200,9 +199,13 @@ sorting lists of items by nth element
 		vec.push_back(temp);
 	}
 
-	sort(vec.begin(), vec.end(), [](vector<int> &v1, vector<int> &v2) {
+	sort(vec.begin(), vec.end(), [keyIdx](vector<int> &v1, vector<int> &v2) {
 		return v1[keyIdx] < v2[keyIdx];
 	});
+
+stable sort
+
+	stable_sort(v.begin(), v.end());
 
 remove item at index from vector:
 
